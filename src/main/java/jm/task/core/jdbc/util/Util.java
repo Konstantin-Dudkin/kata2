@@ -13,7 +13,8 @@ public class Util {
     private static final String PASSWORD = "0000";
 
     public static Connection getConnection() throws SQLException {
-    Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        return connection;
+        Driver driver = DriverManager.getDriver(URL);
+        DriverManager.registerDriver(driver);
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
 }
